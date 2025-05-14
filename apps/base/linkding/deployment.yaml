@@ -14,9 +14,9 @@ spec:
     spec:
       securityContext:
         runAsNonRoot: true 
-        runAsUser: 1000
-        runAsGroup: 3000
-        fsGroup: 2000
+        runAsUser: 33 #www-data user id as its default for ubuntu and user found in passwd file
+        runAsGroup: 33 # same as above but for groups
+        fsGroup: 33 #for volume mounts value same as above though
        # supplementalGroups: 4000
 
       containers:
@@ -30,7 +30,7 @@ spec:
               mountPath: /etc/linkding/data
           
           securityContext:
-           allowPrivilegeEscalation: false
+           allowPrivilegeEscalation: false # can be false by default but good to set just in case
 
       volumes:
          - name: linkding-data
